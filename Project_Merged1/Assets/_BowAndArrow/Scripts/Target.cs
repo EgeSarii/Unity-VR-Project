@@ -16,8 +16,8 @@ public class Target : MonoBehaviour
     }
     public void SpawnBall()
     {
-        
         Instantiate(spherePrefab, spawnPoint.position, Quaternion.identity);
+        spherePrefab.GetComponent<Rigidbody>().velocity = new Vector3(50,50,50);
     }
 }
   

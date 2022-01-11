@@ -4,11 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 	
-public class r2d2 : MonoBehaviour
+public class r2d2copy : MonoBehaviour
 {
+	/*
 	public GameObject canvas;
 	public AudioManager audio ;
-    public GameObject cam;
+    public Camera cam;
     public NavMeshAgent robot;
 
     private Vector3 playerPos;
@@ -54,17 +55,17 @@ public class r2d2 : MonoBehaviour
 	}
     void Awake ()
     {
-     	playerPos = cam.transform.position;
+     	playerPos = Input.mousePosition;
 		sceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
     
     // Update is called once per frame
     void Update()
     {		
-        if (playerPos != cam.transform.position)
+        if (playerPos != Input.mousePosition)
         {	
-			MoveRobot(cam.transform.position);	
-			playerPos = cam.transform.position;
+			MoveRobot(Input.mousePosition);	
+			playerPos = Input.mousePosition;
 		}
 		if(sceneIndex ==0)
 		{
@@ -82,17 +83,22 @@ public class r2d2 : MonoBehaviour
 
 	void MoveRobot(Vector3 dest)
 	{
-		//Make noise 
-		audio.Play("Beeping");
-
-        //Move the robot
-		destination = dest;
-		float dest_X = (destination.x < 0f) ? destination.x + 0.8f : destination.x - 0.8f;
-		float dest_Z = (destination.z < 0f) ? destination.z + 0.8f : destination.z - 0.8f;
-				
-		destination.Set(dest_X, destination.y, dest_Z);
-        robot.SetDestination(destination);
+		Ray ray =cam.ScreenPointToRay(dest);
+        RaycastHit hit;
 		
+        if(Physics.Raycast(ray, out hit))
+        {
+			//Make noise 
+			audio.Play("Beeping");
+
+        	//Move the robot
+			destination = hit.point;
+			float dest_X = (destination.x < 0f) ? destination.x + 0.8f : destination.x - 0.8f;
+			float dest_Z = (destination.z < 0f) ? destination.z + 0.8f : destination.z - 0.8f;
+				
+			destination.Set(dest_X, destination.y, dest_Z);
+        	robot.SetDestination(destination);
+		}
 	}
 	
 	
@@ -107,7 +113,7 @@ public class r2d2 : MonoBehaviour
 	}
 	IEnumerator Entrance(int t)
     {
-		if(Vector3.Distance(robot.transform.position, destination) <=5f )//add if it is an entrance scene
+		if(Vector3.Distance(robot.transform.position, destination) <= 0.3f )//add if it is an entrance scene
 		{ 
 			for(int i = 0; i< entranceMessagesStr.Length; i++)
 			{
@@ -169,5 +175,5 @@ public class r2d2 : MonoBehaviour
 			}
 		}
 	}
-	
+	*/
 }
