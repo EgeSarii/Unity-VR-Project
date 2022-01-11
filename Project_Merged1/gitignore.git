@@ -1,0 +1,17 @@
+.DS_Store
+Thumbs.db
+Library
+Logs
+/UserSettings
+/Temp
+*.csproj
+*.pidb
+*.sln
+*.userprefs
+*.unityproj
+InspectorExpandItems.asset
+EditorUserBuildSettings.asset
+Web/
+*.apk
+/iOS
+Assets/AssetStoreTools*
