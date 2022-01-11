@@ -8,24 +8,16 @@ public class Target : MonoBehaviour
     [SerializeField] GameObject spherePrefab;
     [SerializeField] Transform spawnPoint;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-     //   if(Input.GetKeyDown(KeyCode.Space))
-     //       SpawnBall();
-    }
-
-    private void OnTriggerEnter2D (Collider2D col){
-        SpawnBall();
+    void OnTriggerEnter (Collider col){
+        if(col.gameObject.name == ("Arrow"))
+        {
+             SpawnBall();
+        }
     }
     public void SpawnBall()
     {
+        
         Instantiate(spherePrefab, spawnPoint.position, Quaternion.identity);
     }
 }
+  
