@@ -5,13 +5,12 @@ using UnityEngine.SceneManagement;
 public class R2Collision : MonoBehaviour
 {
     // Start is called before the first frame update
-    private void onCollisionEnter (Collision col)
+    void OnCollisionEnter (Collision col)
     {
-        
-        if (col.collider.gameObject.name == ("Door"))
+        Debug.Log(col.gameObject.name);
+        if (col.gameObject.name == ("Door"))
         {
-            Debug.Log("hello");
-           SceneManager.LoadScene("MainScene");
+           SceneManager.LoadScene(1);
         }
    }
 }

@@ -14,7 +14,7 @@ public class r2d2 : MonoBehaviour
     private Vector3 playerPos;
     private Vector3 destination;
 	private RectTransform rectTransform;
-
+	private int sceneIndex;
 	string[] entranceMessagesStr = new string []{
 		"Oh you must be new! Welcome to the Game!",
 		"If you want to play just go and enter the door",
@@ -46,10 +46,6 @@ public class r2d2 : MonoBehaviour
 
 	bool[] afterStairsMes = new bool[] {true, true, true};
 
-
-
-
-
 	void Start()
 	{
 		audio =FindObjectOfType<AudioManager>();
@@ -59,6 +55,7 @@ public class r2d2 : MonoBehaviour
     void Awake ()
     {
      	playerPos = Input.mousePosition;
+		sceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
     
     // Update is called once per frame
@@ -69,10 +66,17 @@ public class r2d2 : MonoBehaviour
 			MoveRobot(Input.mousePosition);	
 			playerPos = Input.mousePosition;
 		}
-		StartCoroutine(Entrance(3));
-		StartCoroutine(Stairs(2));
-		StartCoroutine(OnStairs(2));
-		StartCoroutine(AfterStairs(2));
+		if(sceneIndex ==0)
+		{
+			StartCoroutine(Entrance(3));
+		}
+		if(sceneIndex ==1)
+		{
+			StartCoroutine(Stairs(2));
+			StartCoroutine(OnStairs(2));
+			StartCoroutine(AfterStairs(2));
+		}
+		
 
     }
 

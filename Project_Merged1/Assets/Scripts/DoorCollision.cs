@@ -11,7 +11,7 @@ public class DoorCollision : MonoBehaviour
         if (col.gameObject.tag ==("Door"))
         {
             print("hello");
-           SceneManager.LoadScene("MainScene");
+           SceneManager.LoadScene(1);
         }
    }
 }
