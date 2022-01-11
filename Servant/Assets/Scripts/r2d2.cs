@@ -74,8 +74,12 @@ public class r2d2 : MonoBehaviour
 			playerPos = Input.mousePosition;
 		}
 		StartCoroutine(Entrance(3));
+<<<<<<< HEAD
 		StopCoroutine(Entrance(3));
 		StartCoroutine(Stairs(2)); 
+=======
+		StartCoroutine(Stairs(2));
+>>>>>>> 2d5777fac299f33a8c46e01328c10fea88b3cda7
 		StartCoroutine(OnStairs(2));
 		StartCoroutine(AfterStairs(2));
 
@@ -126,11 +130,15 @@ public class r2d2 : MonoBehaviour
 				}
 			}
 		}	
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 2d5777fac299f33a8c46e01328c10fea88b3cda7
 	}
 
 	IEnumerator Stairs(int t)
     {
+<<<<<<< HEAD
 		if(entrance)
 		{
 			for(int i = 0; i< stairsMessagesStr.Length; i++)
@@ -186,6 +194,52 @@ public class r2d2 : MonoBehaviour
 			}
 		}
 		afterStairs = true;
+=======
+		for(int i = 0; i< stairsMessagesStr.Length; i++)
+		{
+			if (stairsMes[i])
+			{
+				audio.Play("Excited");
+				ShowInfo(stairsMessagesStr[i]);
+				yield return new WaitForSecondsRealtime(t);
+				stairsMes[i]= false;
+			}
+		}	
+	}
+	IEnumerator OnStairs(int t)
+    {
+		Vector3 newPos = new Vector3(0.3f, 0.3f,2.0f);
+		if(Vector3.Distance(playerPos, newPos)<=1.0f)
+		{
+			for(int i = 0; i< onStairsMessageStr.Length; i++)
+			{
+				if (onStairsMes[i])
+				{
+					audio.Play("Excited");
+					ShowInfo(onStairsMessageStr[i]);
+					yield return new WaitForSecondsRealtime(t);
+					onStairsMes[i]= false;
+				}
+			}
+		}
+	}
+	IEnumerator AfterStairs(int t)
+    {
+		
+		if(playerPos.y<=1.0f)
+		{
+			for(int i = 0; i< afterStairsMessageStr.Length; i++)
+			{
+				if (afterStairsMes[i])
+				{
+					audio.Play("Excited");
+					ShowInfo(afterStairsMessageStr[i]);
+					yield return new WaitForSecondsRealtime(t);
+					afterStairsMes[i]= false;
+				}
+			}
+		}
+>>>>>>> 2d5777fac299f33a8c46e01328c10fea88b3cda7
 	}
 	
 }
