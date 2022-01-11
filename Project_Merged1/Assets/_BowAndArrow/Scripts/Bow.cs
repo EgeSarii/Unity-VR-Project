@@ -54,6 +54,7 @@ public class Bow : MonoBehaviour
 		
 		//Create Ob and child it
 		GameObject arrowObject = Instantiate (arrowPrefab, socket);
+		arrowObject.name = "Arrow";
 		
 		//Orient 
 		arrowObject.transform.localPosition = new Vector3 (0,0,0.425f);
